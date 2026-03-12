@@ -10,7 +10,11 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: '*'
+  origin: [
+    'http://localhost:3000',
+    'https://smart-agri.vercel.app',
+    'https://smart-agri-frontend.vercel.app'
+  ]
 }));
 app.use(express.json());
 
