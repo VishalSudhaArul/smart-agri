@@ -1,4 +1,4 @@
-const SoilReport = require('../models/SoilReport');
+const SoilReport = require('../models/soilReport');
 
 // AI Logic — Soil Analyzer
 const analyzeSoil = (nitrogen, phosphorus, potassium, pH, moisture) => {
