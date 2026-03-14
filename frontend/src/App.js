@@ -15,6 +15,9 @@ import Profile from './pages/Profile';
 import QandA from './pages/QandA';
 import ExpertDashboard from './pages/ExpertDashboard';
 import DiseaseDetector from './pages/DiseaseDetector';
+import Analytics from './pages/Analytics';
+import MarketPrice from './pages/MarketPrice';
+import CropCalendar from './pages/CropCalendar';
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
@@ -28,60 +31,43 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/" element={
-          <PrivateRoute>
-            <Navbar />
-            <Dashboard />
-          </PrivateRoute>
+          <PrivateRoute><Navbar /><Dashboard /></PrivateRoute>
         } />
         <Route path="/soil" element={
-          <PrivateRoute>
-            <Navbar />
-            <SoilAnalyzer />
-          </PrivateRoute>
+          <PrivateRoute><Navbar /><SoilAnalyzer /></PrivateRoute>
         } />
         <Route path="/crop" element={
-          <PrivateRoute>
-            <Navbar />
-            <CropAdvisor />
-          </PrivateRoute>
+          <PrivateRoute><Navbar /><CropAdvisor /></PrivateRoute>
         } />
         <Route path="/yield" element={
-          <PrivateRoute>
-            <Navbar />
-            <YieldPredictor />
-          </PrivateRoute>
+          <PrivateRoute><Navbar /><YieldPredictor /></PrivateRoute>
         } />
         <Route path="/weather" element={
-  <PrivateRoute>
-    <Navbar />
-    <Weather />
-  </PrivateRoute>
-} />
-<Route path="/profile" element={
-  <PrivateRoute>
-    <Navbar />
-    <Profile />
-  </PrivateRoute>
-} />
-<Route path="/qa" element={
-  <PrivateRoute>
-    <Navbar />
-    <QandA />
-  </PrivateRoute>
-} />
-<Route path="/expert" element={
-  <PrivateRoute>
-    <Navbar />
-    <ExpertDashboard />
-  </PrivateRoute>
-} />
-<Route path="/disease" element={
-  <PrivateRoute>
-    <Navbar />
-    <DiseaseDetector />
-  </PrivateRoute>
-} />
+          <PrivateRoute><Navbar /><Weather /></PrivateRoute>
+        } />
+        <Route path="/profile" element={
+          <PrivateRoute><Navbar /><Profile /></PrivateRoute>
+        } />
+        <Route path="/qa" element={
+          <PrivateRoute><Navbar /><QandA /></PrivateRoute>
+        } />
+        <Route path="/expert" element={
+          <PrivateRoute><Navbar /><ExpertDashboard /></PrivateRoute>
+        } />
+        <Route path="/disease" element={
+          <PrivateRoute><Navbar /><DiseaseDetector /></PrivateRoute>
+        } />
+        <Route path="/analytics" element={
+          <PrivateRoute><Navbar /><Analytics /></PrivateRoute>
+        } />
+        <Route path="/market" element={
+          <PrivateRoute><Navbar /><MarketPrice /></PrivateRoute>
+        } />
+        <Route path="/calendar" element={
+          <PrivateRoute><Navbar /><CropCalendar /></PrivateRoute>
+        } />
       </Routes>
     </Router>
   );

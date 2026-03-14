@@ -16,6 +16,9 @@ const Navbar = () => {
     { to: '/weather', label: 'Weather' },
     { to: '/disease', label: 'Disease' },
     { to: '/qa', label: 'Q&A' },
+    { to: '/analytics', label: '📊 Analytics' },
+    { to: '/market', label: '💰 Market' },
+    { to: '/calendar', label: '📅 Calendar' },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -23,15 +26,17 @@ const Navbar = () => {
   return (
     <nav style={{ background: 'linear-gradient(135deg, #14532d 0%, #15803d 100%)' }}
       className="text-white px-6 py-3 flex justify-between items-center shadow-lg sticky top-0 z-50">
+
       <Link to="/" className="flex items-center gap-2">
         <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-green-900 font-bold text-sm">SA</div>
-        <span className="brand font-bold text-lg tracking-wide">Smart Agri</span>
+        <span className="font-bold text-lg tracking-wide" style={{ fontFamily: 'Fraunces, serif' }}>Smart Agri</span>
       </Link>
 
-      <div className="flex items-center gap-1">
+      {/* Scrollable nav links */}
+      <div className="flex items-center gap-1 overflow-x-auto" style={{ maxWidth: '65%' }}>
         {links.map((link) => (
           <Link key={link.to} to={link.to}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all tracking-wide ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
               isActive(link.to)
                 ? 'bg-white text-green-800 shadow-md'
                 : 'text-green-100 hover:bg-white/15'
@@ -41,15 +46,15 @@ const Navbar = () => {
         ))}
         {user?.role === 'expert' && (
           <Link to="/expert"
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
               isActive('/expert') ? 'bg-white text-green-800' : 'text-green-100 hover:bg-white/15'
             }`}>
-            Expert
+            👨‍💼 Expert
           </Link>
         )}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-shrink-0">
         <Link to="/profile"
           className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border border-white/20">
           <div className="w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center text-green-900 font-bold text-xs">

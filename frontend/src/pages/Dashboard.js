@@ -5,12 +5,69 @@ const Dashboard = () => {
   const { user } = useAuth();
 
   const cards = [
-    { title: 'Crop Advisor', emoji: '🌱', desc: 'Personalized sowing, irrigation & fertilizer plans', link: '/crop', bg: '#f0fdf4', border: '#bbf7d0', accent: '#15803d', tag: 'AI Advisory' },
-    { title: 'Soil Analyzer', emoji: '🧪', desc: 'NPK analysis, pH check & soil health scoring', link: '/soil', bg: '#fffbeb', border: '#fde68a', accent: '#b45309', tag: 'Lab Grade' },
-    { title: 'Yield Predictor', emoji: '📈', desc: 'Predict harvest in quintals with confidence score', link: '/yield', bg: '#eff6ff', border: '#bfdbfe', accent: '#1d4ed8', tag: 'ML Model' },
-    { title: 'Disease Detector', emoji: '🔬', desc: 'Upload crop image & describe symptoms for diagnosis', link: '/disease', bg: '#fff1f2', border: '#fecdd3', accent: '#be123c', tag: 'Image AI' },
-    { title: 'Weather Advisory', emoji: '🌦️', desc: 'Live weather data with crop-specific farming advice', link: '/weather', bg: '#f0f9ff', border: '#bae6fd', accent: '#0369a1', tag: 'Live Data' },
-    { title: 'Ask Experts', emoji: '💬', desc: 'AI answers + certified expert verification system', link: '/qa', bg: '#faf5ff', border: '#e9d5ff', accent: '#7e22ce', tag: 'AI + Human' },
+    {
+      title: 'Crop Advisor',
+      emoji: '🌱',
+      desc: 'Personalized sowing, irrigation & fertilizer plans',
+      link: '/crop',
+      bg: '#f0fdf4', border: '#bbf7d0', accent: '#15803d', tag: 'AI Advisory'
+    },
+    {
+      title: 'Soil Analyzer',
+      emoji: '🧪',
+      desc: 'NPK analysis, pH check & soil health scoring',
+      link: '/soil',
+      bg: '#fffbeb', border: '#fde68a', accent: '#b45309', tag: 'Lab Grade'
+    },
+    {
+      title: 'Yield Predictor',
+      emoji: '📈',
+      desc: 'Predict harvest in quintals with confidence score',
+      link: '/yield',
+      bg: '#eff6ff', border: '#bfdbfe', accent: '#1d4ed8', tag: 'ML Model'
+    },
+    {
+      title: 'Disease Detector',
+      emoji: '🔬',
+      desc: 'Upload crop image & describe symptoms for diagnosis',
+      link: '/disease',
+      bg: '#fff1f2', border: '#fecdd3', accent: '#be123c', tag: 'Image AI'
+    },
+    {
+      title: 'Weather Advisory',
+      emoji: '🌦️',
+      desc: 'Live weather data with crop-specific farming advice',
+      link: '/weather',
+      bg: '#f0f9ff', border: '#bae6fd', accent: '#0369a1', tag: 'Live Data'
+    },
+    {
+      title: 'Ask Experts',
+      emoji: '💬',
+      desc: 'AI answers + certified expert verification system',
+      link: '/qa',
+      bg: '#faf5ff', border: '#e9d5ff', accent: '#7e22ce', tag: 'AI + Human'
+    },
+    {
+      title: 'Farm Analytics',
+      emoji: '📊',
+      desc: 'Track soil health trends, yield history and farm performance charts',
+      link: '/analytics',
+      bg: '#eef2ff', border: '#c7d2fe', accent: '#3730a3', tag: 'Insights'
+    },
+    {
+      title: 'Market Prices',
+      emoji: '💰',
+      desc: 'Live mandi rates with 7-day price trends and sell recommendations',
+      link: '/market',
+      bg: '#f0fdf4', border: '#86efac', accent: '#166534', tag: 'Live Rates'
+    },
+    {
+      title: 'Crop Calendar',
+      emoji: '📅',
+      desc: 'Auto-generated crop schedule with activity tracking and reminders',
+      link: '/calendar',
+      bg: '#faf5ff', border: '#e9d5ff', accent: '#7e22ce', tag: 'Planner'
+    },
   ];
 
   return (
@@ -34,7 +91,7 @@ const Dashboard = () => {
 
           <div className="grid grid-cols-3 gap-4 mt-10 max-w-lg">
             {[
-              { label: 'AI Modules', value: '6', sub: 'Active' },
+              { label: 'AI Modules', value: '9', sub: 'Active' },
               { label: 'Expert Support', value: '24/7', sub: 'Available' },
               { label: 'Farmers', value: '10K+', sub: 'Helped' },
             ].map((s, i) => (
@@ -49,13 +106,15 @@ const Dashboard = () => {
 
       {/* Cards */}
       <div className="max-w-5xl mx-auto px-8 py-10">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800">Your Farming Tools</h2>
+
+        {/* Core AI Tools */}
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-gray-800">🤖 AI Farming Tools</h2>
           <p className="text-gray-500 text-sm mt-1">6 AI-powered modules for smarter farming decisions</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {cards.map((card, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+          {cards.slice(0, 6).map((card, i) => (
             <Link to={card.link} key={i}
               className={`card-hover block rounded-2xl p-6 border fade-up delay-${i + 1}`}
               style={{ background: card.bg, borderColor: card.border }}>
@@ -66,41 +125,95 @@ const Dashboard = () => {
                   {card.tag}
                 </span>
               </div>
-              <h3 className="font-bold text-base mb-1.5" style={{ color: card.accent, fontFamily: 'Fraunces, serif' }}>
+              <h3 className="font-bold text-base mb-1.5"
+                style={{ color: card.accent, fontFamily: 'Fraunces, serif' }}>
                 {card.title}
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
-              <p className="mt-4 text-sm font-semibold flex items-center gap-1" style={{ color: card.accent }}>
+              <p className="mt-4 text-sm font-semibold flex items-center gap-1"
+                style={{ color: card.accent }}>
                 Get Started <span>→</span>
               </p>
             </Link>
           ))}
         </div>
 
+        {/* New Features Section */}
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-gray-800">🚀 Smart Farm Management</h2>
+          <p className="text-gray-500 text-sm mt-1">Analytics, market intelligence and crop planning tools</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+          {cards.slice(6).map((card, i) => (
+            <Link to={card.link} key={i}
+              className={`card-hover block rounded-2xl p-6 border fade-up delay-${i + 1}`}
+              style={{ background: card.bg, borderColor: card.border }}>
+              <div className="flex justify-between items-start mb-4">
+                <span className="text-3xl">{card.emoji}</span>
+                <span className="text-xs font-bold px-2.5 py-1 rounded-full"
+                  style={{ background: card.border, color: card.accent }}>
+                  {card.tag}
+                </span>
+              </div>
+              <h3 className="font-bold text-base mb-1.5"
+                style={{ color: card.accent, fontFamily: 'Fraunces, serif' }}>
+                {card.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{card.desc}</p>
+              <p className="mt-4 text-sm font-semibold flex items-center gap-1"
+                style={{ color: card.accent }}>
+                Get Started <span>→</span>
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        {/* Expert Banner */}
         {user?.role === 'expert' && (
           <Link to="/expert"
-            className="card-hover mt-5 block rounded-2xl p-6 fade-up"
+            className="card-hover mt-2 mb-5 block rounded-2xl p-6 fade-up"
             style={{ background: 'linear-gradient(135deg, #14532d, #15803d)', color: 'white' }}>
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-green-300 text-xs uppercase tracking-widest mb-1">Expert Access</p>
                 <h3 className="font-bold text-lg">👨‍💼 Expert Dashboard</h3>
-                <p className="text-green-100 text-sm mt-1">Review questions and verify AI-generated answers</p>
+                <p className="text-green-100 text-sm mt-1">
+                  Review questions and verify AI-generated answers
+                </p>
               </div>
               <span className="text-4xl text-green-300">→</span>
             </div>
           </Link>
         )}
 
-        <div className="mt-5 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm fade-up">
+        {/* Gemini AI Banner */}
+        <div className="mb-5 rounded-2xl p-6 border border-blue-100 fade-up"
+          style={{ background: 'linear-gradient(135deg, #1e3a5f, #1d4ed8)', color: 'white' }}>
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-blue-200 text-xs uppercase tracking-widest mb-1">Powered by Google</p>
+              <h3 className="font-bold text-lg">🤖 Gemini AI Integrated</h3>
+              <p className="text-blue-100 text-sm mt-1">
+                All advisory modules now powered by Google Gemini AI — smarter, dynamic, real-time responses
+              </p>
+            </div>
+            <div className="text-5xl">✨</div>
+          </div>
+        </div>
+
+        {/* About */}
+        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm fade-up">
           <h2 className="text-xl font-bold text-gray-800 mb-3">🌾 About Smart Agri</h2>
           <p className="text-gray-500 text-sm leading-relaxed">
-            Smart Agri is an AI-powered platform built for Indian farmers. Combining machine learning with
+            Smart Agri is an AI-powered platform built for Indian farmers. Combining Google Gemini AI with
             expert agricultural knowledge, we deliver hyper-local advice on sowing, irrigation, fertilizers,
-            pest control, and yield predictions in real time. Our dual AI + Expert verification system
-            ensures every recommendation is accurate and trustworthy.
+            pest control, and yield predictions in real time. Our dual AI + Expert verification system,
+            live market prices, crop calendar planner, and farm analytics make it a complete farm
+            management solution trusted by 10,000+ farmers across India.
           </p>
         </div>
+
       </div>
     </div>
   );
